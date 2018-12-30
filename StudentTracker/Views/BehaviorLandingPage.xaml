@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="StudentTracker.Views.BehaviorLandingPage"
+             Title="{Binding Title}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!--Page Level Resources: Compatibile with Xamarin Live Player -->
+            <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="Accent">#96d1ff</Color>
+            <Color x:Key="LightTextColor">#999999</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+        <Grid Margin="2,5">
+            <Grid.RowDefinitions>
+                 <RowDefinition Height="Auto" />
+                 <RowDefinition Height="Auto" />
+                 <RowDefinition Height="Auto" />
+                 <RowDefinition Height="Auto" />
+                 <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            
+            <StackLayout Grid.Row="0" BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                    <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                        <Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="64" />
+                    </ContentView>
+                </StackLayout>
+            </StackLayout>
+        
+             <Label Grid.Row="1" Margin="20,2,2,2" VerticalOptions="Center" FontSize="12">
+                    <Label.FormattedText>
+                        <FormattedString>
+                           <FormattedString.Spans>
+                                <Span Text="To begin charting, first select a student; then pick a time period in which the evaluation/behavior was observed. Note that time period defaults to the current period based on current time." 
+                                      ForegroundColor="{StaticResource LightTextColor}"  />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+             </Label>
+        
+            <TableView Intent="Form" Grid.Row="2" HeightRequest="100">
+                <TableSection Title ="Select a student">
+                    <ViewCell>
+                        <Picker x:Name="studentPicker" Title="Tab/click to select a student"
+                                HorizontalOptions ="FillAndExpand" Margin="20,0,0,0">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                  <x:String>Aston Tower</x:String>
+                                  <x:String>Capuchin Michael</x:String>
+                                  <x:String>Blue Door</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                    </ViewCell>
+                </TableSection>
+            </TableView>
+        
+            <TableView Intent="Form" Grid.Row="3" HeightRequest="100">
+                <TableSection Title ="Select a time period">
+                    <ViewCell>
+                        <Label Margin="20,0,0,0" VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="ELA" />
+                                        <Span Text=" " />
+                                        <Span Text="9:00 - 9:35" ForegroundColor="{StaticResource LightTextColor}" />
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </ViewCell>
+                </TableSection>
+            </TableView>
+        
+            <TableView Intent="Form" Grid.Row="4" HeightRequest="140">
+                <TableSection Title ="Choose a charting option">
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Margin="20,0,0,0"  VerticalOptions="Center">
+                            <Label Text="Behavior" VerticalOptions="Center"/>
+                            <Image Source="next.png" Opacity="50" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="0,0,20,0"/>
+                        </StackLayout>
+                    </ViewCell>
+                 <ViewCell>
+                        <StackLayout Orientation="Horizontal" Margin="20,0,0,0"  VerticalOptions="Center">
+                            <Label Text="Evaluation" VerticalOptions="Center"/>
+                            <Image Source="next.png" Opacity="50" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="0,0,20,0"/>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+            </TableView>
+        </Grid>
+
+                
+</ContentPage>
