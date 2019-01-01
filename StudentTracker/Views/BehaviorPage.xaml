@@ -1,5 +1,39 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="StudentTracker.Views.BehaviorPage">
-    <ContentPage.Content>
-    </ContentPage.Content>
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="StudentTracker.Views.BehaviorPage"
+             Title="Behavior Log">
+   <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Priority = "0" Order="Primary" Command="{Binding SaveCommand}"/>
+        <ToolbarItem Text="Cancel" Priority = "1" Order="Primary" Command="{Binding CancelCommand}" />
+   </ContentPage.ToolbarItems>
+   <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Row="0" Grid.Column="0" Text="Location: "/>
+        <Picker Grid.Row ="0" Grid.Column ="1" Title="Select location"
+                                HorizontalOptions ="FillAndExpand">
+             <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                  <x:String>Classroom</x:String>
+                  <x:String>Hallway</x:String>
+                  <x:String>Playground</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+        
+   </Grid>
 </ContentPage>

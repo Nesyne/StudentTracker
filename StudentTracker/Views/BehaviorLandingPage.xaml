@@ -78,12 +78,18 @@
                 <TableSection Title ="Choose a charting option">
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" Margin="20,0,0,0"  VerticalOptions="Center">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenBehaviorPageCommand}"/>
+                            </StackLayout.GestureRecognizers>
                             <Label Text="Behavior" VerticalOptions="Center"/>
                             <Image Source="next.png" Opacity="50" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="0,0,20,0"/>
                         </StackLayout>
                     </ViewCell>
                  <ViewCell>
                         <StackLayout Orientation="Horizontal" Margin="20,0,0,0"  VerticalOptions="Center">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenEvaluationPageCommand}"/>
+                            </StackLayout.GestureRecognizers>
                             <Label Text="Evaluation" VerticalOptions="Center"/>
                             <Image Source="next.png" Opacity="50" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="0,0,20,0"/>
                         </StackLayout>
