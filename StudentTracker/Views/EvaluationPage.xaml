@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="StudentTracker.Views.EvaluationPage"
+             Title="Evaluation Log">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Priority = "0" Order="Primary" Command="{Binding SaveCommand}"/>
+        <ToolbarItem Text="Cancel" Priority = "1" Order="Primary" Command="{Binding CancelCommand}" />
+    </ContentPage.ToolbarItems>
+    <Grid>
+        
+    </Grid>
+</ContentPage>

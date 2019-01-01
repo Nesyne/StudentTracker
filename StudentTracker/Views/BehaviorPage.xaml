@@ -10,7 +10,7 @@
    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -23,9 +23,9 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         
-        <Label Grid.Row="0" Grid.Column="0" Text="Location: "/>
+        <Label Grid.Row="0" Grid.Column="0" Text="Location:" VerticalOptions="Center" Margin="5,5,2,2"/>
         <Picker Grid.Row ="0" Grid.Column ="1" Title="Select location"
-                                HorizontalOptions ="FillAndExpand">
+                                HorizontalOptions ="Fill"  VerticalOptions="Center" Margin="0,5,5,2">
              <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                   <x:String>Classroom</x:String>

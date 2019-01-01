@@ -13,7 +13,7 @@ namespace StudentTracker.Views
         {
             InitializeComponent();
             
-            BindingContext = _viewModel = new BehaviorLandingViewModel(this);
+            BindingContext = _viewModel = new BehaviorLandingViewModel(this.Navigation);
         }
     }
 }

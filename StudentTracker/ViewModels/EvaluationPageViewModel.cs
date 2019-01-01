@@ -1,9 +1,10 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
+using StudentTracker.Views;
 using Xamarin.Forms;
-
 namespace StudentTracker.ViewModels
 {
-    public class BehaviorPageViewModel: BaseViewModel
+    public class EvaluationPageViewModel:BaseViewModel
     {
         INavigation _navigation;
 
@@ -11,7 +12,7 @@ namespace StudentTracker.ViewModels
 
         public ICommand CancelCommand { get; }
 
-        public BehaviorPageViewModel(INavigation navigation)
+        public EvaluationPageViewModel(INavigation navigation)
         {
             _navigation = navigation;
 

@@ -6,15 +6,15 @@ namespace StudentTracker.ViewModels
 {
     public class BehaviorLandingViewModel:BaseViewModel
     {
-        ContentPage _page;
+        INavigation _navigation;
 
         public ICommand OpenBehaviorPageCommand { get; }
 
         public ICommand OpenEvaluationPageCommand { get; }
 
-        public BehaviorLandingViewModel(ContentPage page)
+        public BehaviorLandingViewModel(INavigation navigation)
         {
-            _page = page;
+            _navigation = navigation;
 
             Title = "Behavior/Evaluation";
 
@@ -25,12 +25,12 @@ namespace StudentTracker.ViewModels
 
         async void OnBehaviorTapped()
         {
-            await _page.Navigation.PushModalAsync(new NavigationPage(new BehaviorPage()));
+            await _navigation.PushModalAsync(new NavigationPage(new BehaviorPage()));
         }
 
-        void OnEvaluationTapped()
+        async void OnEvaluationTapped()
         {
-
+            await _navigation.PushModalAsync(new NavigationPage(new EvaluationPage()));
         }
     }
 }
