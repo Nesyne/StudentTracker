@@ -16,7 +16,7 @@ namespace StudentTracker.ViewModels
         {
             _navigation = navigation;
 
-            Title = "Behavior/Evaluation";
+            Title = "Behavior or Evaluation";
 
             OpenBehaviorPageCommand = new Command(OnBehaviorTapped);
 
@@ -30,7 +30,7 @@ namespace StudentTracker.ViewModels
 
         async void OnEvaluationTapped()
         {
-            await _navigation.PushModalAsync(new NavigationPage(new EvaluationPage()));
+            await _navigation.PushAsync(new NavigationPage(new EvaluationPage()));
         }
     }
 }

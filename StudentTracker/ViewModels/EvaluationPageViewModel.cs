@@ -1,34 +1,54 @@
 ﻿using System;
 using System.Windows.Input;
 using StudentTracker.Views;
+using System.Collections.ObjectModel;
+using StudentTracker.Models;
 using Xamarin.Forms;
+using System.Diagnostics;
+using System.Threading.Tasks;
 namespace StudentTracker.ViewModels
 {
     public class EvaluationPageViewModel:BaseViewModel
     {
         INavigation _navigation;
 
-        public ICommand SaveCommand { get; }
+        public ObservableCollection<Eval> Evals { get; set; }
 
-        public ICommand CancelCommand { get; }
+        public Command LoadEvalsCommand { get; set; }
 
         public EvaluationPageViewModel(INavigation navigation)
         {
             _navigation = navigation;
 
-            SaveCommand = new Command(Save);
+            Evals = new ObservableCollection<Eval>();
 
-            CancelCommand = new Command(Cancel);
+            LoadEvalsCommand = new Command(async () => await ExecuteLoadEvalsCommand());
         }
 
-        async void Save()
+        async Task ExecuteLoadEvalsCommand()
         {
-            await _navigation.PopModalAsync();
-        }
+            if (IsBusy)
+                return;
 
-        async void Cancel()
-        {
-            await _navigation.PopModalAsync();
+            IsBusy = true;
+
+            try
+            {
+                Evals.Clear();
+                var evals = await EvalDataStore.GetItemsAsync(true);
+                foreach (var eval in evals)
+                {
+                    Evals.Add(eval);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         }
     }
 }

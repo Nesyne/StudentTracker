@@ -14,6 +14,8 @@ namespace StudentTracker.ViewModels
     {
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
 
+        public IDataStore<Eval> EvalDataStore => DependencyService.Get<IDataStore<Eval>>() ?? new EvalDataStore();
+
         bool isBusy = false;
         public bool IsBusy
         {

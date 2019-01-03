@@ -15,5 +15,13 @@ namespace StudentTracker.Views
 
             BindingContext = _viewModel = new EvaluationPageViewModel(this.Navigation);
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (_viewModel.Evals.Count == 0)
+                _viewModel.LoadEvalsCommand.Execute(null);
+        }
     }
 }

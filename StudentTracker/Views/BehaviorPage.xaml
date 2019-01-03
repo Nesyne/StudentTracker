@@ -3,6 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="StudentTracker.Views.BehaviorPage"
              Title="Behavior Log">
+   <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="labelStyle" TargetType="Label">
+                <Setter Property="Margin" Value="5,2,2,2"/>
+            </Style>
+             <Style x:Key="pickerStyle" TargetType="Picker">
+                <Setter Property="Margin" Value="0,2,5,2"/>
+            </Style>
+        </ResourceDictionary>
+   </ContentPage.Resources>
    <ContentPage.ToolbarItems>
         <ToolbarItem Text="Save" Priority = "0" Order="Primary" Command="{Binding SaveCommand}"/>
         <ToolbarItem Text="Cancel" Priority = "1" Order="Primary" Command="{Binding CancelCommand}" />
@@ -21,11 +31,26 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         
-        <Label Grid.Row="0" Grid.Column="0" Text="Location:" VerticalOptions="Center" Margin="5,5,2,2"/>
-        <Picker Grid.Row ="0" Grid.Column ="1" Title="Select location"
-                                HorizontalOptions ="Fill"  VerticalOptions="Center" Margin="0,5,5,2">
+        <!--Date-->
+        <Label Grid.Row="0" Grid.Column="0" Text="Date:" VerticalOptions="Center" Margin="5,8,2,2"/>
+        <DatePicker x:Name="pickerDate" Grid.Row="0" Grid.Column="1" Margin="0,8,5,2"
+                    Date ="{Binding IncidentDate}"
+                    Format="dd MMM yyyy"
+                    HorizontalOptions ="Fill" VerticalOptions="Center"/>
+        
+         <!--Time-->
+        <Label Grid.Row="1" Grid.Column="0" Text="Time:" VerticalOptions="Center" Style="{StaticResource labelStyle}"/>
+        <TimePicker x:Name="pickerTime" Grid.Row="1" Grid.Column="1" Style="{StaticResource pickerStyle}"
+                    Time ="{Binding IncidentTime}"
+                    HorizontalOptions ="Fill" VerticalOptions="Center"/>
+        
+        <!--Location-->
+        <Label Grid.Row="2" Grid.Column="0" Text="Location:" VerticalOptions="Center" Style="{StaticResource labelStyle}"/>
+        <Picker x:Name ="locationPicker" Grid.Row ="2" Grid.Column ="1" Title="Select location"
+                                HorizontalOptions ="Fill"  VerticalOptions="Center" Style="{StaticResource pickerStyle}">
              <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                   <x:String>Classroom</x:String>
@@ -34,6 +59,76 @@
                 </x:Array>
             </Picker.ItemsSource>
         </Picker>
+        
+        <!--Activity-->
+        <Label Grid.Row="3" Grid.Column="0" Text="Activity:" VerticalOptions="Center" Style="{StaticResource labelStyle}"/>
+        <Picker x:Name="activityPicker" Grid.Row ="3" Grid.Column ="1" Title="Select Activity"
+                                HorizontalOptions ="Fill"  VerticalOptions="Center" Style="{StaticResource pickerStyle}">
+             <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                  <x:String>Large Group</x:String>
+                  <x:String>Small Group</x:String>
+                  <x:String>Independent</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+        
+        <!--Antecedent-->
+        <Label Grid.Row="4" Grid.Column="0" Text="Antecedent:" VerticalOptions="Center" Style="{StaticResource labelStyle}"/>
+        <Picker x:Name="antecedentPicker" Grid.Row ="4" Grid.Column ="1" Title="Select Antecedent"
+                                HorizontalOptions ="Fill"  VerticalOptions="Center" Style="{StaticResource pickerStyle}">
+             <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                  <x:String>Peer Interaction</x:String>
+                  <x:String>Received diff. Work</x:String>
+                  <x:String>Other</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+                
+        <!--Behavior-->
+        <Label Grid.Row="5" Grid.Column="0" Text="Behavior:" VerticalOptions="Center" Style="{StaticResource labelStyle}"/>
+        <Picker x:Name="behaviorPicker" Grid.Row ="5" Grid.Column ="1" Title="Select Behavior"
+                                HorizontalOptions ="Fill"  VerticalOptions="Center" Style="{StaticResource pickerStyle}">
+             <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                  <x:String>Elopement</x:String>
+                  <x:String>Yelling/Screaming</x:String>
+                  <x:String>Throwing Items</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+                
+        <!--Consequence-->
+        <Label Grid.Row="6" Grid.Column="0" Text="Consequence:" VerticalOptions="Center" Style="{StaticResource labelStyle}"/>
+        <Picker x:Name="consequencePicker" Grid.Row ="6" Grid.Column ="1" Title="Select Consequence"
+                                HorizontalOptions ="Fill"  VerticalOptions="Center" Style="{StaticResource pickerStyle}">
+             <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                  <x:String>Adult Attention</x:String>
+                  <x:String>Peer Attention</x:String>
+                  <x:String>Avoid</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+                
+        <!--Intensity-->
+        <Label Grid.Row="7" Grid.Column="0" Text="Intensity:" VerticalOptions="Center" Style="{StaticResource labelStyle}"/>
+        <Picker x:Name="intensityPicker" Grid.Row ="7" Grid.Column ="1" Title="Select Intensity"
+                                HorizontalOptions ="Fill"  VerticalOptions="Center" Style="{StaticResource pickerStyle}">
+             <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                  <x:String>Low</x:String>
+                  <x:String>Medium</x:String>
+                  <x:String>High</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+                
+        <!--Duration-->
+        <Label Grid.Row="8" Grid.Column="0" Text="Antecedent:" VerticalOptions="Center" Style="{StaticResource labelStyle}"/>
+        <Label Grid.Row="8" Grid.Column="1" Text="15:00" VerticalOptions="Center" Margin="0,2,5,2"/>
+        
         
    </Grid>
 </ContentPage>
