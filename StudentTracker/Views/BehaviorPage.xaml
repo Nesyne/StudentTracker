@@ -126,7 +126,7 @@
         </Picker>
                 
         <!--Duration-->
-        <Label Grid.Row="8" Grid.Column="0" Text="Antecedent:" VerticalOptions="Center" Style="{StaticResource labelStyle}"/>
+        <Label Grid.Row="8" Grid.Column="0" Text="Duration:" VerticalOptions="Center" Style="{StaticResource labelStyle}"/>
         <Label Grid.Row="8" Grid.Column="1" Text="15:00" VerticalOptions="Center" Margin="0,2,5,2"/>
         
         

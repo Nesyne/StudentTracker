@@ -1,6 +1,12 @@
 ﻿using Xamarin.Forms;
 using System.Windows.Input;
 using StudentTracker.Views;
+using System.Collections.ObjectModel;
+using StudentTracker.Models;
+using System.Threading.Tasks;
+using StudentTracker.Services;
+using System;
+using System.Diagnostics;
 
 namespace StudentTracker.ViewModels
 {
@@ -12,6 +18,10 @@ namespace StudentTracker.ViewModels
 
         public ICommand OpenEvaluationPageCommand { get; }
 
+        public ObservableCollection<Student> Students { get; set; }
+
+        public ObservableCollection<ClassPeriod> ClassPeriods { get; set; }
+
         public BehaviorLandingViewModel(INavigation navigation)
         {
             _navigation = navigation;
@@ -21,6 +31,12 @@ namespace StudentTracker.ViewModels
             OpenBehaviorPageCommand = new Command(OnBehaviorTapped);
 
             OpenEvaluationPageCommand = new Command(OnEvaluationTapped);
+
+            Students = StudentDataStore.GetStudents();
+
+            ClassPeriods = ClassPeriodDataStore.GetClassPeriods();
+
+
         }
 
         async void OnBehaviorTapped()
@@ -32,5 +48,6 @@ namespace StudentTracker.ViewModels
         {
             await _navigation.PushAsync(new NavigationPage(new EvaluationPage()));
         }
+
     }
 }

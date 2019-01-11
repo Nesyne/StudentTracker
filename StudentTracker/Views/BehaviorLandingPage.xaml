@@ -42,15 +42,12 @@
             <TableView Intent="Form" Grid.Row="2" HeightRequest="100">
                 <TableSection Title ="Select a student">
                     <ViewCell>
-                        <Picker x:Name="studentPicker" Title="Tab/click to select a student"
-                                HorizontalOptions ="FillAndExpand" Margin="20,0,0,0">
-                            <Picker.ItemsSource>
-                                <x:Array Type="{x:Type x:String}">
-                                  <x:String>Aston Tower</x:String>
-                                  <x:String>Capuchin Michael</x:String>
-                                  <x:String>Blue Door</x:String>
-                                </x:Array>
-                            </Picker.ItemsSource>
+                        <Picker x:Name="studentPicker" 
+                                Title="Tab/click to select a student"
+                                HorizontalOptions ="FillAndExpand"
+                                ItemsSource="{Binding Students}" 
+                                ItemDisplayBinding="{Binding Name}"
+                                Margin="2,0,0,0">
                         </Picker>
                     </ViewCell>
                 </TableSection>
@@ -59,17 +56,13 @@
             <TableView Intent="Form" Grid.Row="3" HeightRequest="100">
                 <TableSection Title ="Select a time period">
                     <ViewCell>
-                        <Label Margin="20,0,0,0" VerticalOptions="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <FormattedString.Spans>
-                                        <Span Text="ELA" />
-                                        <Span Text=" " />
-                                        <Span Text="9:00 - 9:35" ForegroundColor="{StaticResource LightTextColor}" />
-                                    </FormattedString.Spans>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
+                         <Picker x:Name="classPeriodPicker" 
+                                Title="Tab/click to select class period"
+                                HorizontalOptions ="FillAndExpand"
+                                ItemsSource="{Binding ClassPeriods}" 
+                                ItemDisplayBinding="{Binding Period}"
+                                Margin="2,0,0,0">
+                        </Picker>
                     </ViewCell>
                 </TableSection>
             </TableView>
