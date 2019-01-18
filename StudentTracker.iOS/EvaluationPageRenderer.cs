@@ -10,10 +10,7 @@ namespace StudentTracker.iOS
 {
     public class EvaluationPageRenderer : PageRenderer
     {
-        public new EvaluationPage Element
-        {
-            get { return (EvaluationPage)base.Element; }
-        }
+        public new EvaluationPage Element => (EvaluationPage)base.Element;
 
         public override void ViewWillAppear(bool animated)
         {

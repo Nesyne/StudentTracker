@@ -13,7 +13,7 @@ namespace StudentTracker.Views
         {
             InitializeComponent();
 
-            BindingContext = _viewModel = new EvaluationPageViewModel(this.Navigation);
+            BindingContext = _viewModel = new EvaluationPageViewModel(Navigation);
         }
 
         protected override void OnAppearing()
@@ -22,6 +22,11 @@ namespace StudentTracker.Views
 
             if (_viewModel.Evals.Count == 0)
                 _viewModel.LoadEvalsCommand.Execute(null);
+        }
+
+        void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        {
+
         }
     }
 }

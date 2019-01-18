@@ -1,24 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="StudentTracker.Views.EvaluationPage"
-             Title="Evaluation Log">
+             x:Class="StudentTracker.Views.AcademicPage"
+             Title="Academic Goals">
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="EvalsListView" 
-                      ItemsSource="{Binding Evals}"
-                      SelectedItem="{Binding SelectedItem}"
-                      ItemTapped = "Handle_ItemTapped"
-                      VerticalOptions="FillAndExpand" HasUnevenRows="true" 
-                      RefreshCommand="{Binding LoadEvalsCommand}" 
-                      IsPullToRefreshEnabled="true" IsRefreshing="{Binding IsBusy, Mode=OneWay}" 
-                      CachingStrategy="RecycleElement">
+            <ListView x:Name="AcademicsListView" ItemsSource="{Binding Academics}" VerticalOptions="FillAndExpand" HasUnevenRows="true" RefreshCommand="{Binding LoadAcademicsCommand}" IsPullToRefreshEnabled="true" IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="10">
                                 <Label Text="{Binding Name}" LineBreakMode="WordWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
-                                <Label Text="{Binding Description}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

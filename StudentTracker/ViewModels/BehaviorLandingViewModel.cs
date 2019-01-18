@@ -12,6 +12,7 @@ namespace StudentTracker.ViewModels
 {
     public class BehaviorLandingViewModel:BaseViewModel
     {
+        private const string V = "Behavior/Evaluation";
         INavigation _navigation;
 
         public ICommand OpenBehaviorPageCommand { get; }
@@ -26,7 +27,7 @@ namespace StudentTracker.ViewModels
         {
             _navigation = navigation;
 
-            Title = "Behavior or Evaluation";
+            Title = V;
 
             OpenBehaviorPageCommand = new Command(OnBehaviorTapped);
 

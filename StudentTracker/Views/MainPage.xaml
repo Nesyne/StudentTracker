@@ -21,7 +21,7 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:ItemsPage />
+                <views:AcademicPage />
             </x:Arguments>
         </NavigationPage>
         <NavigationPage Title="Stats">

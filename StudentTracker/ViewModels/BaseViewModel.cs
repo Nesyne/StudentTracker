@@ -16,6 +16,8 @@ namespace StudentTracker.ViewModels
 
         public IDataStore<Eval> EvalDataStore => DependencyService.Get<IDataStore<Eval>>() ?? new EvalDataStore();
 
+        public IDataStore<AcademicGoal> AcademicGoalDataStore => DependencyService.Get<IDataStore<AcademicGoal>>() ?? new AcademicGoalDataStore();
+
         public StudentDataStore StudentDataStore = new StudentDataStore();
 
         public ClassPeriodDataStore ClassPeriodDataStore = new ClassPeriodDataStore();

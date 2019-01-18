@@ -12,6 +12,8 @@ namespace StudentTracker.ViewModels
     {
         INavigation _navigation;
 
+        private Eval _selectedItem;
+
         public ObservableCollection<Eval> Evals { get; set; }
 
         public Command LoadEvalsCommand { get; set; }
@@ -23,6 +25,19 @@ namespace StudentTracker.ViewModels
             Evals = new ObservableCollection<Eval>();
 
             LoadEvalsCommand = new Command(async () => await ExecuteLoadEvalsCommand());
+        }
+
+        public Eval SelectedItem
+        {
+            get { return _selectedItem; }
+            set
+            {
+                if (_selectedItem == value)
+                    return;
+
+                _selectedItem = value;
+                OnPropertyChanged("SelectedItem");
+            }
         }
 
         async Task ExecuteLoadEvalsCommand()
