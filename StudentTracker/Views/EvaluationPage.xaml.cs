@@ -26,7 +26,7 @@ namespace StudentTracker.Views
 
         void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
-
+            Navigation.PushModalAsync(new NavigationPage(new NewEvalPage()));
         }
     }
 }
