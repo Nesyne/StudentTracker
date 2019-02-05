@@ -35,21 +35,24 @@
         </Grid.RowDefinitions>
         
         <!--Date-->
-        <Label Grid.Row="0" Grid.Column="0" Text="Date:" VerticalOptions="Center" Margin="5,8,2,2"/>
-        <DatePicker x:Name="pickerDate" Grid.Row="0" Grid.Column="1" Margin="0,8,5,2"
+        <Label Grid.Row="0" Grid.Column="0" Text="Date:" VerticalOptions="Center" Margin="5,8,2,5"/>
+        <DatePicker x:Name="pickerDate" Grid.Row="0" Grid.Column="1" Margin="0,8,5,5"
                     Date ="{Binding IncidentDate}"
                     Format="dd MMM yyyy"
                     HorizontalOptions ="Fill" VerticalOptions="Center"/>
         
          <!--Time-->
-        <Label Grid.Row="1" Grid.Column="0" Text="Time:" VerticalOptions="Center" Style="{StaticResource labelStyle}"/>
+        <Label Grid.Row="1" Grid.Column="0" Text="Time:" 
+               VerticalOptions="Center" Style="{StaticResource labelStyle}" Margin="0,5"/>
         <TimePicker x:Name="pickerTime" Grid.Row="1" Grid.Column="1" Style="{StaticResource pickerStyle}"
-                    Time ="{Binding IncidentTime}"
+                    Time ="{Binding IncidentTime}" Margin="0,5"
                     HorizontalOptions ="Fill" VerticalOptions="Center"/>
         
         <!--Location-->
-        <Label Grid.Row="2" Grid.Column="0" Text="Location:" VerticalOptions="Center" Style="{StaticResource labelStyle}"/>
-        <Picker x:Name ="locationPicker" Grid.Row ="2" Grid.Column ="1" Title="Select location"
+        <Label Grid.Row="2" Grid.Column="0" Text="Location:" VerticalOptions="Center" 
+               Style="{StaticResource labelStyle}"
+               Margin="0,5"/>
+        <Picker x:Name ="locationPicker" Grid.Row ="2" Grid.Column ="1" Title="Select location" Margin="0,5"
                                 HorizontalOptions ="Fill"  VerticalOptions="Center" Style="{StaticResource pickerStyle}">
              <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
@@ -61,8 +64,9 @@
         </Picker>
         
         <!--Activity-->
-        <Label Grid.Row="3" Grid.Column="0" Text="Activity:" VerticalOptions="Center" Style="{StaticResource labelStyle}"/>
-        <Picker x:Name="activityPicker" Grid.Row ="3" Grid.Column ="1" Title="Select Activity"
+        <Label Grid.Row="3" Grid.Column="0" Text="Activity:" VerticalOptions="Center" 
+               Style="{StaticResource labelStyle}" Margin="0,5"/>
+        <Picker x:Name="activityPicker" Grid.Row ="3" Grid.Column ="1" Title="Select Activity" Margin="0,5"
                                 HorizontalOptions ="Fill"  VerticalOptions="Center" Style="{StaticResource pickerStyle}">
              <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
@@ -74,8 +78,10 @@
         </Picker>
         
         <!--Antecedent-->
-        <Label Grid.Row="4" Grid.Column="0" Text="Antecedent:" VerticalOptions="Center" Style="{StaticResource labelStyle}"/>
-        <Picker x:Name="antecedentPicker" Grid.Row ="4" Grid.Column ="1" Title="Select Antecedent"
+        <Label Grid.Row="4" Grid.Column="0" Text="Antecedent:" VerticalOptions="Center" 
+               Style="{StaticResource labelStyle}"
+               Margin="0,5"/>
+        <Picker x:Name="antecedentPicker" Grid.Row ="4" Grid.Column ="1" Title="Select Antecedent" Margin="0,5"
                                 HorizontalOptions ="Fill"  VerticalOptions="Center" Style="{StaticResource pickerStyle}">
              <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
@@ -87,9 +93,11 @@
         </Picker>
                 
         <!--Behavior-->
-        <Label Grid.Row="5" Grid.Column="0" Text="Behavior:" VerticalOptions="Center" Style="{StaticResource labelStyle}"/>
+        <Label Grid.Row="5" Grid.Column="0" Text="Behavior:" VerticalOptions="Center" Margin="0,5"
+               Style="{StaticResource labelStyle}"/>
         <Picker x:Name="behaviorPicker" Grid.Row ="5" Grid.Column ="1" Title="Select Behavior"
-                                HorizontalOptions ="Fill"  VerticalOptions="Center" Style="{StaticResource pickerStyle}">
+                                HorizontalOptions ="Fill"  Margin="0,5"
+                VerticalOptions="Center" Style="{StaticResource pickerStyle}">
              <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                   <x:String>Elopement</x:String>
@@ -100,9 +108,11 @@
         </Picker>
                 
         <!--Consequence-->
-        <Label Grid.Row="6" Grid.Column="0" Text="Consequence:" VerticalOptions="Center" Style="{StaticResource labelStyle}"/>
+        <Label Grid.Row="6" Grid.Column="0" Text="Consequence:" Margin="0,5"
+               VerticalOptions="Center" Style="{StaticResource labelStyle}"/>
         <Picker x:Name="consequencePicker" Grid.Row ="6" Grid.Column ="1" Title="Select Consequence"
-                                HorizontalOptions ="Fill"  VerticalOptions="Center" Style="{StaticResource pickerStyle}">
+                                HorizontalOptions ="Fill" Margin="0,5"
+                VerticalOptions="Center" Style="{StaticResource pickerStyle}">
              <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                   <x:String>Adult Attention</x:String>
@@ -113,8 +123,10 @@
         </Picker>
                 
         <!--Intensity-->
-        <Label Grid.Row="7" Grid.Column="0" Text="Intensity:" VerticalOptions="Center" Style="{StaticResource labelStyle}"/>
-        <Picker x:Name="intensityPicker" Grid.Row ="7" Grid.Column ="1" Title="Select Intensity"
+        <Label Grid.Row="7" Grid.Column="0" Text="Intensity:" 
+               VerticalOptions="Center" Margin="0,5"
+               Style="{StaticResource labelStyle}"/>
+        <Picker x:Name="intensityPicker" Grid.Row ="7" Grid.Column ="1" Title="Select Intensity" Margin="0,5"
                                 HorizontalOptions ="Fill"  VerticalOptions="Center" Style="{StaticResource pickerStyle}">
              <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
@@ -126,8 +138,9 @@
         </Picker>
                 
         <!--Duration-->
-        <Label Grid.Row="8" Grid.Column="0" Text="Duration:" VerticalOptions="Center" Style="{StaticResource labelStyle}"/>
-        <Label Grid.Row="8" Grid.Column="1" Text="15:00" VerticalOptions="Center" Margin="0,2,5,2"/>
+        <Label Grid.Row="8" Grid.Column="0" Text="Duration:" VerticalOptions="Center" Margin="0,5"
+               Style="{StaticResource labelStyle}"/>
+        <Label Grid.Row="8" Grid.Column="1" Text="15:00" VerticalOptions="Center" Margin="0,5"/>
         
         
    </Grid>

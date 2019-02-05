@@ -7,7 +7,84 @@
     <ToolbarItem Text="Save" Priority = "0" Order="Primary" Command="{Binding SaveCommand}"/>
     <ToolbarItem Text="Cancel" Priority = "1" Order="Primary" Command="{Binding CancelCommand}" />
    </ContentPage.ToolbarItems>
-    <ContentPage.Content>
+        <Grid Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <Label Grid.Row="0" Grid.Column="0" Text="Period:"  Margin="0,5"
+                   VerticalOptions="Center" HorizontalOptions="End"/>
+            <Picker x:Name="timePicker" Grid.Row="0" Grid.Column="1"
+                    Title="Tab/click to select class period" 
+                                HorizontalOptions ="FillAndExpand"
+                                ItemsSource="{Binding ClassPeriods}" 
+                                ItemDisplayBinding="{Binding Period}"
+                                SelectedIndexChanged="TimePeriod_SelectedIndexChanged"
+                                Margin="2,5,0,5"
+                    />
+            
+            <Label Grid.Row="1" Grid.Column="0" Text="Level:" Margin="0,5"
+                   VerticalOptions="Center" HorizontalOptions="End"/>
         
-    </ContentPage.Content>
+            <StackLayout Grid.Column="1" Grid.Row="1" Orientation="Horizontal" Margin="0,5,2,5">
+                <Frame BackgroundColor="Green" BorderColor="{Binding GreenBorderColor}" >
+                    <Frame.GestureRecognizers>
+                         <TapGestureRecognizer Command="{Binding GreenCommand}"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+                <Frame BackgroundColor="Yellow" BorderColor="{Binding YellowBorderColor}">
+                    <Frame.GestureRecognizers>
+                         <TapGestureRecognizer Command="{Binding YellowCommand}"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+                <Frame BackgroundColor="Red" BorderColor="{Binding RedBorderColor}">
+                    <Frame.GestureRecognizers>
+                         <TapGestureRecognizer Command="{Binding RedCommand}"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+                <Frame BorderColor="{Binding NABorderColor}">
+                    <Frame.GestureRecognizers>
+                         <TapGestureRecognizer Command="{Binding NACommand}"/>
+                    </Frame.GestureRecognizers>
+                    <Label Text="N/A"/>
+                </Frame>
+            </StackLayout>
+            
+            <Label Grid.Row="2" Grid.Column="0" Text="Reason Codes:" IsVisible="{Binding IsReasonVisible}"
+                   VerticalOptions="Center" HorizontalOptions="End" Margin="0,5"/>
+            <Picker x:Name="reasonCodePicker" Grid.Row="2" Grid.Column="1" IsVisible="{Binding IsReasonVisible}"
+                                Title="Select reason code"
+                                HorizontalOptions ="FillAndExpand"
+                                ItemsSource="{Binding ReasonCodes}" 
+                                ItemDisplayBinding="{Binding Name}"
+                                SelectedIndexChanged="ReasonCode_SelectedIndexChanged"
+                                Margin="2,5,0,5">
+                        </Picker>
+            
+           <Label Grid.Row="3" Grid.Column="0" Text="Time missed:" 
+                   VerticalOptions="Center" HorizontalOptions="End" Margin="0,5"/>
+           <Entry x:Name="textTimeMissed" Placeholder="Enter time in mins" Grid.Row="3" Grid.Column="1"  Margin="0,5"
+                    VerticalOptions="Start" WidthRequest="60" TextChanged="TimeMissed_TextChanged"/>
+        
+            <Label Grid.Row="4" Grid.Column="0" Text="Notes:" 
+                   VerticalOptions="Start" HorizontalOptions="End" Margin="0,5"/>
+            <StackLayout BackgroundColor="White" Grid.Row="4" Grid.Column="1"
+                         MinimumHeightRequest="100"
+                          Margin="0,5,0,15">
+                <StackLayout BackgroundColor="Gray" Padding="1">
+                    <Editor BackgroundColor="White" AutoSize="TextChanges" 
+                            TextChanged="Notes_TextChanged"
+                            />
+                </StackLayout>
+            </StackLayout>
+        
+        </Grid>
 </ContentPage>

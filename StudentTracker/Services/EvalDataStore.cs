@@ -14,8 +14,8 @@ namespace StudentTracker.Services
             evals = new List<Eval>();
             var mockItems = new List<Eval>
             {
-                new Eval { Id = Guid.NewGuid().ToString(), Name = "Complete Work On Time", Description="This is an item description." },
-                new Eval { Id = Guid.NewGuid().ToString(), Name = "Safety", Description="This is an item description." },
+                new Eval { Id = Guid.NewGuid().ToString(), Name = "Complete Work On Time", Description="This is an item description.",ReasonOnRed= true },
+                new Eval { Id = Guid.NewGuid().ToString(), Name = "Safety", Description="This is an item description.",ReasonOnYellow = true,ReasonOnRed = true },
                 new Eval { Id = Guid.NewGuid().ToString(), Name = "Communicates need for a break when in the yellow zone", Description="This is an item description." },
                 new Eval { Id = Guid.NewGuid().ToString(), Name = "Communicates appropriately when others are bothering", Description="This is an item description." },
 

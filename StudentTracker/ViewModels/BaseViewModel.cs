@@ -22,6 +22,8 @@ namespace StudentTracker.ViewModels
 
         public ClassPeriodDataStore ClassPeriodDataStore = new ClassPeriodDataStore();
 
+        public ReasonCodeDataStore ReasonCodesDataStore = new ReasonCodeDataStore();
+
         bool isBusy = false;
         public bool IsBusy
         {
