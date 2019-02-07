@@ -31,8 +31,6 @@ namespace StudentTracker.Services
                 _periods.Add(period);
             }
 
-          
-
         }
 
         public ObservableCollection<ClassPeriod> GetClassPeriods()
