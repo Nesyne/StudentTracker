@@ -18,9 +18,21 @@ namespace StudentTracker.ViewModels
 
         public IDataStore<AcademicGoal> AcademicGoalDataStore => DependencyService.Get<IDataStore<AcademicGoal>>() ?? new AcademicGoalDataStore();
 
-        public StudentDataStore StudentDataStore = new StudentDataStore();
+        public IDataStore<Location> LocationDataStore => DependencyService.Get<IDataStore<Location>>() ?? new LocationDataStore();
 
-        public ClassPeriodDataStore ClassPeriodDataStore = new ClassPeriodDataStore();
+        public IDataStore<Activity> ActivityDataStore => DependencyService.Get<IDataStore<Activity>>() ?? new ActivityDataStore();
+
+        public IDataStore<Antecedent> AntecedentDataStore => DependencyService.Get<IDataStore<Antecedent>>() ?? new AntecedentDataStore();
+
+        public IDataStore<Models.Behavior> BehaviorDataStore => DependencyService.Get<IDataStore<Models.Behavior>>() ?? new BehaviorDataStore();
+
+        public IDataStore<Consequence> ConsequenceDataStore => DependencyService.Get<IDataStore<Consequence>>() ?? new ConsequenceDataStore();
+
+        public IDataStore<Intensity> IntensityDataStore => DependencyService.Get<IDataStore<Intensity>>() ?? new IntensityDataStore();
+
+        public IDataStore<Student> StudentDataStore => DependencyService.Get<IDataStore<Student>>() ??  new StudentDataStore();
+
+        public IDataStore<ClassPeriod> ClassPeriodDataStore => DependencyService.Get<IDataStore<ClassPeriod>>() ?? new ClassPeriodDataStore();
 
         public ReasonCodeDataStore ReasonCodesDataStore = new ReasonCodeDataStore();
 

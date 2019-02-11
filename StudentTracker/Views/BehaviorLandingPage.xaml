@@ -11,6 +11,9 @@
             <Color x:Key="LightTextColor">#999999</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
+       <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Refresh" Priority = "0" Order="Primary" Command="{Binding LoadDataSourcesCommand}"/>
+   </ContentPage.ToolbarItems>
         <Grid Margin="2,5">
             <Grid.RowDefinitions>
                  <RowDefinition Height="Auto" />
@@ -47,6 +50,7 @@
                                 HorizontalOptions ="FillAndExpand"
                                 ItemsSource="{Binding Students}" 
                                 ItemDisplayBinding="{Binding Name}"
+                                SelectedItem="{Binding Student}"
                                 Margin="2,0,0,0">
                         </Picker>
                     </ViewCell>
@@ -61,6 +65,7 @@
                                 HorizontalOptions ="FillAndExpand"
                                 ItemsSource="{Binding ClassPeriods}" 
                                 ItemDisplayBinding="{Binding Period}"
+                                SelectedItem="{Binding ClassPeriod}"
                                 Margin="2,0,0,0">
                         </Picker>
                     </ViewCell>

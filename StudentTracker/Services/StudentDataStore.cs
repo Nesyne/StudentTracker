@@ -7,7 +7,7 @@ using StudentTracker.Models;
 
 namespace StudentTracker.Services
 {
-    public class StudentDataStore 
+    public class StudentDataStore : IDataStore<Student>
     {
         ObservableCollection<Student> _students;
 
@@ -31,10 +31,38 @@ namespace StudentTracker.Services
             }
         }
 
-        public ObservableCollection<Student> GetStudents()
+        public async Task<bool> AddItemAsync(Student item)
         {
-            return _students;
+            _students.Add(item);
+
+            return await Task.FromResult(true);
         }
 
+        public async Task<bool> DeleteItemAsync(string id)
+        {
+            var oldItem = _students.FirstOrDefault((Student arg) => arg.Id == id);
+            _students.Remove(oldItem);
+
+            return await Task.FromResult(true);
+        }
+
+        public async Task<Student> GetItemAsync(string id)
+        {
+            return await Task.FromResult(_students.FirstOrDefault(s => s.Id == id));
+        }
+
+        public async Task<IEnumerable<Student>> GetItemsAsync(bool forceRefresh = false)
+        {
+            return await Task.FromResult(_students);
+        }
+
+        public async Task<bool> UpdateItemAsync(Student item)
+        {
+            var oldItem = _students.FirstOrDefault((Student arg) => arg.Id == item.Id);
+            _students.Remove(oldItem);
+            _students.Add(item);
+
+            return await Task.FromResult(true);
+        }
     }
 }

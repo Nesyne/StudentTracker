@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
+using StudentTracker.Models;
 using Xamarin.Forms;
 
 namespace StudentTracker.ViewModels
@@ -7,12 +8,20 @@ namespace StudentTracker.ViewModels
     public class BehaviorPageViewModel: BaseViewModel
     {
         INavigation _navigation;
+        Student _student;
+        ClassPeriod _classPeriod;
         DateTime _incidentDate = DateTime.Now;
         TimeSpan _incidentTime = new TimeSpan(DateTime.Now.Hour,DateTime.Now.Minute,DateTime.Now.Second);
 
-        public BehaviorPageViewModel(INavigation navigation)
+        public BehaviorPageViewModel(INavigation navigation, Student student, ClassPeriod classPeriod)
         {
             _navigation = navigation;
+            _student = student;
+            _classPeriod = classPeriod;
+
+            Title = student.Name;
+
+            TimePeriod = classPeriod.Period;
 
             SaveCommand = new Command(Save);
 
@@ -22,6 +31,8 @@ namespace StudentTracker.ViewModels
         public ICommand SaveCommand { get; }
 
         public ICommand CancelCommand { get; }
+
+        public string TimePeriod { get; }
 
         public DateTime IncidentDate
         {

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using StudentTracker.Models;
 using StudentTracker.ViewModels;
 using Xamarin.Forms;
 
@@ -10,11 +12,13 @@ namespace StudentTracker.Views
     {
         NewEvalPageViewModel _viewModel;
 
-        public NewEvalPage(Models.Eval eval)
+        public NewEvalPage(Models.Eval eval, Student student, ClassPeriod classPeriod, ObservableCollection<ClassPeriod> classPeriods)
         {
             InitializeComponent();
 
-            BindingContext = _viewModel = new NewEvalPageViewModel(Navigation,eval);
+            Title = student.Name;
+
+            BindingContext = _viewModel = new NewEvalPageViewModel(Navigation,eval,student,classPeriod,classPeriods);
         }
 
         void TimePeriod_SelectedIndexChanged(object sender, System.EventArgs e)

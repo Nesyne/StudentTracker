@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using StudentTracker.Models;
 using StudentTracker.ViewModels;
 using Xamarin.Forms;
 
@@ -8,12 +10,19 @@ namespace StudentTracker.Views
     public partial class EvaluationPage : ContentPage
     {
         EvaluationPageViewModel _viewModel;
+        Student _student;
+        ClassPeriod _classPeriod;
+        ObservableCollection<ClassPeriod> _classPeriods;
 
-        public EvaluationPage()
+        public EvaluationPage(Student student, ClassPeriod classPeriod, ObservableCollection<ClassPeriod> classPeriods)
         {
             InitializeComponent();
 
-            BindingContext = _viewModel = new EvaluationPageViewModel(Navigation);
+            _student = student;
+            _classPeriod = classPeriod;
+            _classPeriods = classPeriods;
+
+            BindingContext = _viewModel = new EvaluationPageViewModel(Navigation,student);
         }
 
         protected override void OnAppearing()
@@ -34,7 +43,7 @@ namespace StudentTracker.Views
 
                 if(eval != null)
                 {
-                    Navigation.PushModalAsync(new NavigationPage(new NewEvalPage(eval)));
+                    Navigation.PushModalAsync(new NavigationPage(new NewEvalPage(eval,_student,_classPeriod,_classPeriods)));
                 }
             }
 

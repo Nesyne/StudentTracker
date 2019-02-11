@@ -18,11 +18,13 @@ namespace StudentTracker.ViewModels
 
         public Command LoadEvalsCommand { get; set; }
 
-        public EvaluationPageViewModel(INavigation navigation)
+        public EvaluationPageViewModel(INavigation navigation,Student student)
         {
             _navigation = navigation;
 
             Evals = new ObservableCollection<Eval>();
+
+            Title = student.Name;
 
             LoadEvalsCommand = new Command(async () => await ExecuteLoadEvalsCommand());
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using StudentTracker.Models;
 using StudentTracker.ViewModels;
 using Xamarin.Forms;
 
@@ -10,11 +11,11 @@ namespace StudentTracker.Views
     {
         BehaviorPageViewModel _viewModel;
 
-        public BehaviorPage()
+        public BehaviorPage(Student student, ClassPeriod classPeriod)
         {
             InitializeComponent();
 
-            BindingContext = _viewModel = new BehaviorPageViewModel(this.Navigation);
+            BindingContext = _viewModel = new BehaviorPageViewModel(this.Navigation,student,classPeriod);
         }
 
         void Duration_TextChanged(object sender, Xamarin.Forms.TextChangedEventArgs e)

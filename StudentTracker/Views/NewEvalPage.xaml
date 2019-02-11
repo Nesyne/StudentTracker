@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="StudentTracker.Views.NewEvalPage"
-             Title="New Evaluation">
+             Title="{Binding Title}">
    <ContentPage.ToolbarItems>
     <ToolbarItem Text="Save" Priority = "0" Order="Primary" Command="{Binding SaveCommand}"/>
     <ToolbarItem Text="Cancel" Priority = "1" Order="Primary" Command="{Binding CancelCommand}" />
@@ -16,7 +16,7 @@
                                 HorizontalOptions ="FillAndExpand"
                                 ItemsSource="{Binding ClassPeriods}" 
                                 ItemDisplayBinding="{Binding Period}"
-                                SelectedIndexChanged="TimePeriod_SelectedIndexChanged"
+                                SelectedItem="{Binding TimePeriod}"
                                 Margin="0,3"
                     />
             

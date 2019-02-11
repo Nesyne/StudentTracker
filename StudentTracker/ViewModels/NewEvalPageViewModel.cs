@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 using StudentTracker.Models;
 using Xamarin.Forms;
@@ -12,6 +13,9 @@ namespace StudentTracker.ViewModels
 
         Eval _selectedEval;
         EvalDetail _evalDetails;
+        Student _student;
+        ClassPeriod _classPeriod;
+        ClassPeriod _timePeriod;
         Color _naBorderColor;
         Color _greenBorderColor;
         Color _yellowBorderColor;
@@ -45,6 +49,19 @@ namespace StudentTracker.ViewModels
                     return;
                 _evalDetails = value;
                 OnPropertyChanged("EvalDetails");
+            }
+        }
+
+        public ClassPeriod TimePeriod
+        {
+            get { return _timePeriod; }
+            set
+            {
+                if (_timePeriod == value)
+                    return;
+                _timePeriod = value;
+                _evalDetails.ClassPeriodId = value.Id;
+                OnPropertyChanged("TimePeriod");
             }
         }
 
@@ -132,11 +149,15 @@ namespace StudentTracker.ViewModels
             }
         }
 
-        public NewEvalPageViewModel(INavigation navigation, Eval eval)
+        public NewEvalPageViewModel(INavigation navigation, Eval eval, Student student, ClassPeriod classPeriod, ObservableCollection<ClassPeriod> classPeriods)
         {
             _navigation = navigation;
 
             _selectedEval = eval;
+
+            _student = student;
+
+            _classPeriod = classPeriod;
 
             _evalDetails = new EvalDetail();
 
@@ -152,15 +173,17 @@ namespace StudentTracker.ViewModels
 
             RedCommand = new Command(RedSelected);
 
-            ClassPeriods = ClassPeriodDataStore.GetClassPeriods();
+            ClassPeriods = classPeriods;
 
-            ReasonCodes = ReasonCodesDataStore.GetReasonCodes();
+            LoadDropDownData();
 
             IsReasonVisible = eval.ReasonOnRed || eval.ReasonOnYellow;
 
             NASelected();
 
             _evalDetails.EvalId = eval.Id;
+
+            Title = student.Name;
 
         }
 
@@ -172,6 +195,20 @@ namespace StudentTracker.ViewModels
         async void Cancel()
         {
             await _navigation.PopModalAsync();
+        }
+
+        void LoadDropDownData()
+        {
+            //if(ClassPeriods == null || ClassPeriods.Count == 0)
+                //ClassPeriods = ClassPeriodDataStore.GetItemsAsync(true);
+
+            ReasonCodes = ReasonCodesDataStore.GetReasonCodes();
+
+            if (ClassPeriods != null)
+            {
+                TimePeriod = ClassPeriods.FirstOrDefault(t => t.Id == _classPeriod.Id);
+            }
+
         }
 
         void NASelected()
