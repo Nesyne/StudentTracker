@@ -16,6 +16,7 @@ namespace StudentTracker.ViewModels
         INavigation _navigation;
         Student _student;
         ClassPeriod _classPeriod;
+        DataAccess _dataAccess;
 
         public Command LoadDataSourcesCommand { get; set; }
 
@@ -27,18 +28,6 @@ namespace StudentTracker.ViewModels
 
         public ObservableCollection<ClassPeriod> ClassPeriods { get; set; }
 
-        public ObservableCollection<Location> Locations { get; set; }
-
-        public ObservableCollection<Activity> Activities { get; set; }
-
-        public ObservableCollection<Antecedent> Antecedents { get; set; }
-
-        public ObservableCollection<Models.Behavior> Behaviors { get; set; }
-
-        public ObservableCollection<Consequence> Consequences { get; set; }
-
-        public ObservableCollection<Intensity> Intensities { get; set; }
-
 
         public BehaviorLandingViewModel(INavigation navigation)
         {
@@ -46,14 +35,21 @@ namespace StudentTracker.ViewModels
 
             Title = V;
 
+            _dataAccess = new DataAccess();
+
             LoadDataSourcesCommand = new Command(async () => await ExecuteLoadDataSourcesCommand());
 
-            OpenBehaviorPageCommand = new Command(OnBehaviorTapped);
+            OpenBehaviorPageCommand = new Command(OnBehaviorTapped, CanExecuteTapped);
 
-            OpenEvaluationPageCommand = new Command(OnEvaluationTapped);
+            OpenEvaluationPageCommand = new Command(OnEvaluationTapped, CanExecuteTapped);
 
             LoadDataSourcesCommand.Execute(null);
         }
+        public bool IsEnabled
+        {
+            get { return Student != null && ClassPeriod != null; }
+        }
+
         public Student Student
         {
             get { return _student; }
@@ -88,14 +84,11 @@ namespace StudentTracker.ViewModels
 
             try
             {
-                await GetStudents();
-                await GetClassPeriods();
-                await GetLocations();
-                await GetActivities();
-                await GetAntecedents();
-                await GetBehaviors();
-                await GetConsequences();
-                await GetIntensities();
+                await _dataAccess.GetAllCollections();
+
+                Students = _dataAccess.Students;
+
+                ClassPeriods = _dataAccess.ClassPeriods;
             }
             catch (Exception ex)
             {
@@ -107,124 +100,14 @@ namespace StudentTracker.ViewModels
             }
         }
 
-        async Task GetStudents()
+        private bool CanExecuteTapped()
         {
-            if (Students != null)
-                Students.Clear();
-            else
-                Students = new ObservableCollection<Student>();
-
-            var items = await StudentDataStore.GetItemsAsync(true);
-            foreach (var item in items)
-            {
-                Students.Add(item);
-            }
+            return IsEnabled;
         }
-
-        async Task GetClassPeriods()
-        {
-            if (ClassPeriods != null)
-                ClassPeriods.Clear();
-            else
-                ClassPeriods = new ObservableCollection<ClassPeriod>();
-
-            var items = await ClassPeriodDataStore.GetItemsAsync(true);
-            foreach (var item in items)
-            {
-                ClassPeriods.Add(item);
-            }
-        }
-        async Task GetLocations()
-        {
-
-            if (Locations != null)
-                Locations.Clear();
-            else
-                Locations = new ObservableCollection<Location>();
-
-            var locations = await LocationDataStore.GetItemsAsync(true);
-            foreach (var location in locations)
-            {
-                Locations.Add(location);
-            }
-        }
-
-        async Task GetActivities()
-        {
-            if (Activities != null)
-                Activities.Clear();
-            else
-                Activities = new ObservableCollection<Activity>();
-
-            var activities = await ActivityDataStore.GetItemsAsync(true);
-            foreach (var activity in activities)
-            {
-                Activities.Add(activity);
-            }
-        }
-
-        async Task GetAntecedents()
-        {
-            if (Antecedents != null)
-                Antecedents.Clear();
-            else
-                Antecedents = new ObservableCollection<Antecedent>();
-
-            var items = await AntecedentDataStore.GetItemsAsync(true);
-            foreach (var item in items)
-            {
-                Antecedents.Add(item);
-            }
-        }
-
-        async Task GetBehaviors()
-        {
-            if (Behaviors != null)
-                Behaviors.Clear();
-            else
-            {
-                Behaviors = new ObservableCollection<Models.Behavior>();
-            }
-
-            var items = await BehaviorDataStore.GetItemsAsync(true);
-            foreach (var item in items)
-            {
-                Behaviors.Add(item);
-            }
-        }
-
-        async Task GetConsequences()
-        {
-            if (Consequences != null)
-                Consequences.Clear();
-            else
-                Consequences = new ObservableCollection<Consequence>(); 
-
-            var items = await ConsequenceDataStore.GetItemsAsync(true);
-            foreach (var item in items)
-            {
-                Consequences.Add(item);
-            }
-        }
-
-        async Task GetIntensities()
-        {
-            if (Intensities != null)
-                Intensities.Clear();
-            else
-                Intensities = new ObservableCollection<Intensity>();
-
-            var items = await IntensityDataStore.GetItemsAsync(true);
-            foreach (var item in items)
-            {
-                Intensities.Add(item);
-            }
-        }
-
 
         async void OnBehaviorTapped()
         {
-            await _navigation.PushModalAsync(new NavigationPage(new BehaviorPage(_student,_classPeriod)));
+            await _navigation.PushModalAsync(new NavigationPage(new BehaviorPage(_student,_classPeriod,_dataAccess)));
         }
 
         async void OnEvaluationTapped()

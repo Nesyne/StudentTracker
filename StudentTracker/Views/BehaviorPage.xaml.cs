@@ -9,16 +9,18 @@ namespace StudentTracker.Views
 {
     public partial class BehaviorPage : ContentPage
     {
-        BehaviorPageViewModel _viewModel;
+        private BehaviorPageViewModel _viewModel;
+      
 
-        public BehaviorPage(Student student, ClassPeriod classPeriod)
+        public BehaviorPage(Student student, ClassPeriod classPeriod, DataAccess dataAccess)
         {
             InitializeComponent();
 
-            BindingContext = _viewModel = new BehaviorPageViewModel(this.Navigation,student,classPeriod);
+            BindingContext = _viewModel = new BehaviorPageViewModel(this.Navigation,student,classPeriod,dataAccess);
         }
 
-        void Duration_TextChanged(object sender, Xamarin.Forms.TextChangedEventArgs e)
+
+        private void Duration_TextChanged(object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
             try
             {
@@ -32,8 +34,8 @@ namespace StudentTracker.Views
 
                     bool results = int.TryParse(e.NewTextValue, out val);
 
-                    //if (results)
-                        //_viewModel.EvalDetails.TimeMissed = val;
+                    if (results)
+                        _viewModel.BehaviorDetail.Duration = val;
                 }
 
             }

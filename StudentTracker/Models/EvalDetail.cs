@@ -3,6 +3,7 @@ namespace StudentTracker.Models
 {
     public class EvalDetail
     {
+        public string Id { get; set; }
         public string EvalId { get; set; }
         public string ClassPeriodId { get; set; }
         public int Level { get; set; }

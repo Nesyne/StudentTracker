@@ -189,11 +189,13 @@ namespace StudentTracker.ViewModels
 
         async void Save()
         {
+            //Save EvalDetail
             await _navigation.PopModalAsync();
         }
 
         async void Cancel()
         {
+            // Set EvalDetail = null
             await _navigation.PopModalAsync();
         }
 

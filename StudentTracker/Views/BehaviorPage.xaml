@@ -43,89 +43,65 @@
                Style="{StaticResource labelStyle}"
               Margin="0,3,0,0"/>
         <Picker x:Name ="locationPicker" Title="Select location" Margin="5,3,0,3"
-                                HorizontalOptions ="Fill"  VerticalOptions="Center" Style="{StaticResource pickerStyle}">
-             <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                  <x:String>Classroom</x:String>
-                  <x:String>Hallway</x:String>
-                  <x:String>Playground</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
+                ItemsSource="{Binding Locations}"
+                SelectedItem="{Binding SelectedLocation}"
+                ItemDisplayBinding="{Binding Name}"
+                HorizontalOptions ="Fill"  VerticalOptions="Center" Style="{StaticResource pickerStyle}"
+            />
         
         <!--Activity-->
         <Label  Text="Activity:" VerticalOptions="Center" 
                Style="{StaticResource labelStyle}" Margin="0,3,0,0"/>
         <Picker x:Name="activityPicker" Title="Select Activity" Margin="5,3,0,3"
-                                HorizontalOptions ="Fill"  VerticalOptions="Center" Style="{StaticResource pickerStyle}">
-             <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                  <x:String>Large Group</x:String>
-                  <x:String>Small Group</x:String>
-                  <x:String>Independent</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
+                ItemsSource="{Binding Activities}"
+                SelectedItem="{Binding SelectedActivity}"
+                ItemDisplayBinding="{Binding Name}"
+                HorizontalOptions ="Fill"  VerticalOptions="Center" Style="{StaticResource pickerStyle}"
+                />
         
         <!--Antecedent-->
         <Label  Text="Antecedent:" VerticalOptions="Center" 
                Style="{StaticResource labelStyle}"
                Margin="0,3,0,0"/>
         <Picker x:Name="antecedentPicker" Title="Select Antecedent" Margin="5,3,0,3"
-                                HorizontalOptions ="Fill"  VerticalOptions="Center" Style="{StaticResource pickerStyle}">
-             <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                  <x:String>Peer Interaction</x:String>
-                  <x:String>Received diff. Work</x:String>
-                  <x:String>Other</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
+                ItemsSource="{Binding Antecedents}"
+                SelectedItem="{Binding SelectedAntecedent}"
+                ItemDisplayBinding="{Binding Name}"
+                HorizontalOptions ="Fill"  VerticalOptions="Center" Style="{StaticResource pickerStyle}"
+                />
                 
         <!--Behavior-->
         <Label Text="Behavior:" VerticalOptions="Center" Margin="0,3,0,0"
                Style="{StaticResource labelStyle}"/>
         <Picker x:Name="behaviorPicker" Title="Select Behavior"
-                                HorizontalOptions ="Fill"  Margin="5,3,0,3"
-                VerticalOptions="Center" Style="{StaticResource pickerStyle}">
-             <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                  <x:String>Elopement</x:String>
-                  <x:String>Yelling/Screaming</x:String>
-                  <x:String>Throwing Items</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
+                ItemsSource="{Binding Behaviors}"
+                SelectedItem="{Binding SelectedBehavior}"
+                ItemDisplayBinding="{Binding Name}"
+                HorizontalOptions ="Fill"  Margin="5,3,0,3"
+                VerticalOptions="Center" Style="{StaticResource pickerStyle}"
+                />
                 
         <!--Consequence-->
         <Label Text="Consequence:" Margin="0,3,0,0"
                VerticalOptions="Center" Style="{StaticResource labelStyle}"/>
         <Picker x:Name="consequencePicker" Title="Select Consequence"
-                                HorizontalOptions ="Fill" Margin="5,3,0,3"
-                VerticalOptions="Center" Style="{StaticResource pickerStyle}">
-             <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                  <x:String>Adult Attention</x:String>
-                  <x:String>Peer Attention</x:String>
-                  <x:String>Avoid</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
+                ItemsSource="{Binding Consequences}"
+                SelectedItem="{Binding SelectedConsequence}"
+                ItemDisplayBinding="{Binding Name}"
+                HorizontalOptions ="Fill" Margin="5,3,0,3"
+                VerticalOptions="Center" Style="{StaticResource pickerStyle}"
+                />
                 
         <!--Intensity-->
         <Label Text="Intensity:" 
                VerticalOptions="Center" Margin="0,3,0,0"
                Style="{StaticResource labelStyle}"/>
         <Picker x:Name="intensityPicker" Grid.Row ="7" Grid.Column ="1" Title="Select Intensity" Margin="5,3,0,3"
-                                HorizontalOptions ="Fill"  VerticalOptions="Center" Style="{StaticResource pickerStyle}">
-             <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                  <x:String>Low</x:String>
-                  <x:String>Medium</x:String>
-                  <x:String>High</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
+                ItemsSource="{Binding Intensities}"
+                SelectedItem="{Binding SelectedIntensity}"
+                ItemDisplayBinding="{Binding Name}"
+                HorizontalOptions ="Fill"  VerticalOptions="Center" Style="{StaticResource pickerStyle}"
+                />
                 
         <!--Duration-->
         <Label Text="Duration:" VerticalOptions="Center" Margin="0,3,0,0"

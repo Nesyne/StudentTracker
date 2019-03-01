@@ -141,6 +141,7 @@
     <BundleResource Include="Resources\next.png" />
     <BundleResource Include="Resources\next%402x.png" />
     <BundleResource Include="Resources\next%403x.png" />
+    <BundleResource Include="Resources\beval_logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -149,7 +150,7 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="3.4.0.1009999" />
+    <PackageReference Include="Xamarin.Forms" Version="3.5.0.169047" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
